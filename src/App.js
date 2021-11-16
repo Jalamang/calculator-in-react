@@ -20,6 +20,25 @@ class App extends Component {
     this.setState({ number: this.state.number + value });
   };
 
+//Tracks variables in state
+handleSetStoredValue = () => {
+  this.setState({ numberStored: this.state.number, number: "" });
+};
+
+//Handles functionalities
+handleSetCalcFunction = (value) => {
+  console.log(value);
+  if (this.state.number) {
+    this.setState({
+      operator: value,
+    });
+    this.handleSetStoredValue();
+  }
+  if (this.state.numberStored) {
+    this.setState({ operator: value });
+  }
+};
+
 
   render() {
     
