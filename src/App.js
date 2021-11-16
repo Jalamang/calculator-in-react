@@ -65,6 +65,21 @@ class App extends Component {
     }
   };
 
+ //when (AC) key is pressed to clear the field
+ resetAllBtn = (value) => {
+  if (value === "AC") {
+    this.setState({
+      number: "",
+    });
+  }
+};
+
+handlePercentage = () => {
+  this.setState({
+    number: (this.state.number + this.state.numberStored) / 100,
+  });
+};
+
   handleBackSpace = () => {
     if (this.state.number !== "") {
       // const subString = this.state.number.slice(0, -1);
@@ -93,6 +108,10 @@ class App extends Component {
         <div className="app-div">
           {/* Renders display */}
           <ResultComponent number={this.state.number || 0} />
+          <ChangeStateComponent
+            resetAllBtn={this.resetAllBtn}
+            handlePercentage={this.handlePercentage}
+          />
           <NumberComponent whenNumberKeyPressed={this.whenNumberKeyPressed} />
           <OperatorComponent
             calculateFinalValue={this.calculateFinalValue}
