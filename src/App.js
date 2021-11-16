@@ -65,6 +65,13 @@ class App extends Component {
     }
   };
 
+  handleBackSpace = () => {
+    if (this.state.number !== "") {
+      // const subString = this.state.number.slice(0, -1);
+      this.setState({ number: this.state.number.slice(0, -1) });
+    }
+  };
+
   handleZero = (value) => {
     console.log(value);
     if (this.state.number !== "") {
@@ -91,6 +98,7 @@ class App extends Component {
             calculateFinalValue={this.calculateFinalValue}
             handleSetCalcFunction={this.handleSetCalcFunction}
             handleSetStoredValue={this.handleSetStoredValue}
+            handleBackSpace={this.handleBackSpace}
           />
           <DigitsComponent
             handleZero={this.handleZero}
