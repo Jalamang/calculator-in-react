@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+import NumberComponent from "./components/NumberComponent";
+import ResultComponent from "./components/ResultComponent";
+import OperatorComponent from "./components/OperatorComponent";
+import ChangeStateComponent from "./components/ChangeStateComponent";
+import DigitsComponent from "./components/DigitsComponent";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      numberStored: "",
+      number: "",
+      operator: null,
+    };
+  }
+  
+
+  render() {
+    
+    return (
+      <>
+        <h1>Simple Calculator</h1>
+        <div className="app-div">
+          {/* Renders display */}
+          <ResultComponent number={this.state.number || 0} 
+          />
+          
+        </div>
+      </>
+    );
+  }
+
 }
 
 export default App;
