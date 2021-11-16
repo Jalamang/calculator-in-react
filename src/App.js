@@ -20,43 +20,69 @@ class App extends Component {
     this.setState({ number: this.state.number + value });
   };
 
-//Tracks variables in state
-handleSetStoredValue = () => {
-  this.setState({ numberStored: this.state.number, number: "" });
-};
+  //Tracks variables in state
+  handleSetStoredValue = () => {
+    this.setState({ numberStored: this.state.number, number: "" });
+  };
 
-//Handles functionalities
-handleSetCalcFunction = (value) => {
-  console.log(value);
-  if (this.state.number) {
-    this.setState({
-      operator: value,
-    });
-    this.handleSetStoredValue();
-  }
-  if (this.state.numberStored) {
-    this.setState({ operator: value });
-  }
-};
+  //Handles functionalities
+  handleSetCalcFunction = (value) => {
+    console.log(value);
+    if (this.state.number) {
+      this.setState({
+        operator: value,
+      });
+      this.handleSetStoredValue();
+    }
+    if (this.state.numberStored) {
+      this.setState({ operator: value });
+    }
+  };
 
+  //To calculate final output when (=) key is pressed
+  calculateFinalValue = () => {
+    let currentNumber = Number(this.state.number);
+    let storedNumber = Number(this.state.numberStored);
+
+    if (currentNumber && storedNumber) {
+      switch (this.state.operator) {
+        case "+":
+          this.setState({ number: storedNumber + currentNumber });
+          break;
+        case "-":
+          this.setState({ number: storedNumber - currentNumber });
+          break;
+        case "/":
+          this.setState({ number: storedNumber / currentNumber });
+          break;
+        case "*":
+          this.setState({ number: storedNumber * currentNumber });
+          break;
+        default: {
+          this.setState({ number: "" });
+        }
+      }
+    }
+  };
 
   render() {
-    
     return (
       <>
         <h1>Simple Calculator</h1>
         <div className="app-div">
           {/* Renders display */}
-          <ResultComponent number={this.state.number || 0} 
+          <ResultComponent number={this.state.number || 0} />
+          <NumberComponent whenNumberKeyPressed={this.whenNumberKeyPressed} />
+          <OperatorComponent
+            calculateFinalValue={this.calculateFinalValue}
+            handleSetCalcFunction={this.handleSetCalcFunction}
+            handleSetStoredValue={this.handleSetStoredValue}
+           
           />
-          <NumberComponent whenNumberKeyPressed={this.whenNumberKeyPressed}
-          />
-          
         </div>
       </>
     );
   }
-
 }
 
 export default App;
