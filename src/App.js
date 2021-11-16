@@ -65,6 +65,20 @@ class App extends Component {
     }
   };
 
+  handleZero = (value) => {
+    console.log(value);
+    if (this.state.number !== "") {
+      this.setState({ number: this.state.number + value });
+    }
+  };
+
+  handleDecimalPoint = (value) => {
+    if (this.state.number.indexOf(".") === -1) {
+      this.setState({ number: this.state.number + value });
+    }
+  };
+
+
   render() {
     return (
       <>
@@ -77,7 +91,10 @@ class App extends Component {
             calculateFinalValue={this.calculateFinalValue}
             handleSetCalcFunction={this.handleSetCalcFunction}
             handleSetStoredValue={this.handleSetStoredValue}
-           
+          />
+          <DigitsComponent
+            handleZero={this.handleZero}
+            handleDecimalPoint={this.handleDecimalPoint}
           />
         </div>
       </>
