@@ -87,6 +87,24 @@ handlePercentage = () => {
     }
   };
 
+//Toggles btw -/+
+handleToggleNegative = () => {
+  if (this.state.number) {
+    if (this.state.number > 0) {
+      this.setState({ number: `-${this.state.number}` });
+    } else {
+      const positiveNumber = this.state.number.slice(1);
+      this.setState({ number: positiveNumber });
+    }
+  } else if (this.state.numberStored > 0) {
+    this.setState({ numberStored: `-${this.state.numberStored}` });
+  } else {
+    const positiveNumber = this.state.numberStored.slice(1);
+    this.setState({ numberStored: `-${positiveNumber}` });
+  }
+};
+
+
   handleZero = (value) => {
     console.log(value);
     if (this.state.number !== "") {
@@ -111,6 +129,7 @@ handlePercentage = () => {
           <ChangeStateComponent
             resetAllBtn={this.resetAllBtn}
             handlePercentage={this.handlePercentage}
+            handleToggleNegative={this.handleToggleNegative}
           />
           <NumberComponent whenNumberKeyPressed={this.whenNumberKeyPressed} />
           <OperatorComponent
