@@ -15,7 +15,11 @@ class App extends Component {
       operator: null,
     };
   }
-  
+  //when number key is pressed
+  whenNumberKeyPressed = (value) => {
+    this.setState({ number: this.state.number + value });
+  };
+
 
   render() {
     
@@ -25,6 +29,8 @@ class App extends Component {
         <div className="app-div">
           {/* Renders display */}
           <ResultComponent number={this.state.number || 0} 
+          />
+          <NumberComponent whenNumberKeyPressed={this.whenNumberKeyPressed}
           />
           
         </div>
