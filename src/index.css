@@ -1,0 +1,160 @@
+:root {
+  --primary: #9b590f;
+  --secondary: #07518e;
+  --dark: black;
+  --light: rgb(233, 220, 220);
+  --backgroundColor: rgb(110, 99, 99);
+  --border: 3px solid rgb(219, 203, 203);
+}
+
+body {
+  background-color: var(--backgroundColor);
+}
+
+h1{
+  text-align:center;
+  color: #0d0f01c3;
+  border-bottom: 5px solid #9b590f;
+  margin-left: 450px;
+  margin-right: 450px;
+}
+
+button {
+  color: rgb(155, 172, 180);
+  font-family: 25px;
+  padding: 16px;
+  cursor: pointer;
+  transition: 0.9s;
+}
+
+
+.app-div {
+  display: grid;
+  grid-template-columns: 0.55fr;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-left: 510px;
+  margin-right: 500px;
+  box-shadow: 
+  2px 2px 2px 2px #463c30,
+  4px 4px 4px 4px #463c30;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+
+.display {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  padding: 16px;
+  text-align: right;
+  background-color: var(--dark);
+  color: var(--light);
+  font-size: 25px;
+  font-weight: 300;
+  height: 25px;
+  margin-top: 20px;
+  border: 3px solid rgb(164, 192, 199);
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+
+.change-state {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  grid-column: 1 / span 1;
+  /* grid-template-columns: repeat(3 1fr); */
+  /* border: var(--border); */
+   gap: 3px;
+}
+
+.change-state .plus-minus{
+  grid-row: 1;
+  grid-column: 2;
+}
+.change-state .percent{
+  grid-row: 1;
+  grid-column: 3;
+}
+.change-state button {
+  width: 85px;
+  background-color: rgb(4, 78, 75);
+  width: 90px;
+  height: 47.5px;
+}
+
+
+
+
+
+button:hover {
+  opacity: 0.5;
+  background-color: var(--secondary);
+}
+
+.operators {
+  display: grid;
+  grid-row: 2 / span 4;
+  grid-column: 2;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.operators button {
+  /* border: 2px solid rgb(211, 194, 194); */
+  background-color: var(--primary);
+  width: 70px;
+  height: 47.5px;
+  
+  /* padding: 3px; */
+}
+.equal-sign-btn{
+  border-bottom-right-radius: 15px;
+}
+
+.integers {
+  /* border: var(--border); */
+  display: flex;
+  flex-wrap: wrap;
+ margin-top: 4.09px;
+ height: 200px;
+}
+
+.integers button {
+  border: var(--border);
+  flex: 1 1 33.333%;
+  max-width: 33.333%;
+  background-color: var(--dark);
+  
+  
+}
+
+.digits {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  /* border: var(--border); */
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 5px;
+}
+
+.digits .zero-btn{
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  border-bottom-left-radius: 15px;
+}
+
+
+.digits button {
+  /* border: var(--border); 
+   flex: 1 1 30.333%; 
+   max-width: 30.333%; */
+  background-color: var(--dark);
+}
+
+
+button.backspace button {
+  height: 12px;
+}
