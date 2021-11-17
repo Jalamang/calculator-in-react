@@ -17,12 +17,17 @@ class App extends Component {
   }
   //when number key is pressed
   whenNumberKeyPressed = (value) => {
-    this.setState({ number: this.state.number + value });
+    this.setState({ number: this.state.number + value});
   };
 
   //Tracks variables in state
   handleSetStoredValue = () => {
-    this.setState({ numberStored: this.state.number, number: "" });
+    let stored =  0;
+     stored +=  Number(this.state.numberStored) + Number(this.state.number)
+    // stored += ;
+    this.setState({ numberStored: stored, number: ""});
+    // this.setState({ numberStored: this.state.number, number: ""});
+    // console.log(this.state.number)
   };
 
   //Handles functionalities
@@ -70,20 +75,22 @@ class App extends Component {
   if (value === "AC") {
     this.setState({
       number: "",
+      numberStored:"",
+      operator: null
     });
   }
 };
 
 handlePercentage = () => {
   this.setState({
-    number: (this.state.number + this.state.numberStored) / 100,
+    number: (this.state.number ) / 100,
   });
 };
 
   handleBackSpace = () => {
     if (this.state.number !== "") {
       // const subString = this.state.number.slice(0, -1);
-      this.setState({ number: this.state.number.slice(0, -1) });
+      this.setState({ number: this.state.number.slice(0, -1)});
     }
   };
 
